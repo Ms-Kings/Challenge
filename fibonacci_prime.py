@@ -1,6 +1,6 @@
 import time
 
-# Creates a string of n fibonacci numbers in sequence, staring with the number, f0 and f1
+# Creates a string of n fibonacci numbers in sequence, starting with the number, f0 and f1
 # Returns the string created and the last 2 fibonacci numbers that composes it
 def fib_chunk(n, f0, f1): 
     fib = [(f1 + f0) , (f1 + f0 + f1)]
