@@ -1,18 +1,23 @@
 import time
 
-# Creates a string of n fibonacci numbers in sequence, starting with the number, f0 and f1
-# Returns the string created and the last 2 fibonacci numbers that composes it
-def fib_chunk(n, f0, f1): 
+# Creates a string of n fibonacci numbers in sequence
+def fib_chunk(n): 
+    #makes sure it always starts where it stopped
+    global f0, f1 
+
     fib = [(f1 + f0) , (f1 + f0 + f1)]
     for i in range(2, n):
         fib.append(fib[-1] + fib[-2])
+
     # Convert each integer to a string
     fibint = [str(int) for int in fib] 
+
     # Combine each string into a sequence
     sfib = "".join(fibint) 
-    vf0 = fib[-2]
-    vf1 = fib[-1]
-    return sfib, vf0, vf1 
+
+    f0 = fib[-2]
+    f1 = fib[-1]
+    return sfib
 
 def is_prime(n) : 
     if (n <= 1) :
@@ -53,7 +58,7 @@ fib = '112'
 f0 = 1
 f1 = 2
 
-fib1, f0, f1 = fib_chunk(5, f0, f1) 
+fib1 = fib_chunk(5) 
 # Position of wanted prime numbers
 P1 = 44722
 P2 = 53215
@@ -70,7 +75,7 @@ while len(pfib) < P2:
             pfib.append(s10)
         x += 1
     # Get the next chunck of number to be added to the sequence
-    fib1, f0, f1 = fib_chunk(1, f0, f1) 
+    fib1 = fib_chunk(1) 
 
 print('1 st: ', pfib[1 - 1])
 print(P1, 'nd: ', pfib[P1 - 1], ' = ', num2alph(pfib[P1 - 1]))
